@@ -6,9 +6,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('../app/views/home/home.module').then(m => m.HomeModule)
   },
-  // {
-  //   path: '', redirectTo: 'home', pathMatch: 'full'
-  // }
+  {
+    path: 'details',
+    loadChildren: () => import('../app/views/details/details.module').then(m => m.DetailsModule)
+  }
 ];
 
 @NgModule({
