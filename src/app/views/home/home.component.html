@@ -1,0 +1,131 @@
+<div>
+  <div class="fixed">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        <mat-card-title>Filter</mat-card-title>
+      </mat-card-header>
+      <!-- <mat-card-content>
+        <p>This card has divider and indeterminate progress as footer</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+      <mat-accordion class="md:w-26" multi displayMode="flat">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Category </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-chip-listbox aria-label="Color selection" multiple="true">
+            <mat-chip-option
+              *ngFor="let chip of availableColors"
+              selected
+              [color]="chip.color"
+            >
+              {{ chip.name }}
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Rating </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-chip-listbox aria-label="Color selection" multiple="true">
+            <mat-chip-option
+              *ngFor="let chip of ratings"
+            >
+              <div class="flex">
+                <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
+                <p class="m-0 text-center pl-1">{{ chip.name }}</p>
+              </div>
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </div>
+  <div class="relative md:ml-28">
+    <!-- Product Cards -->
+    <div class="grid grid-nogutter">
+      <div class="col-3 px-2">
+        <mat-card class="example-card">
+          <img
+            mat-card-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu"
+          />
+          <mat-card-content>
+            <p class="m-o mt-3 text-base mb-1">Shiba Inu</p>
+            <h3 class="text-lg font-medium mb-1">Rp. 2.000.000</h3>
+          </mat-card-content>
+          <mat-card-actions class="gap-1 justify-content-between">
+            <div class="flex align-items-center">
+              <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
+              <p class="m-0 text-center pl-1">3.5</p>
+            </div>
+            <a class="text-sm">
+              <mat-icon
+                class="mr-0 flex align-items-center"
+                style="height: 20px; width: 20px; font-size: 18px"
+                >shopping_cart</mat-icon
+              >
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-3 px-2">
+        <mat-card class="example-card">
+          <img
+            mat-card-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu"
+          />
+          <mat-card-content>
+            <p class="m-o mt-3 text-base mb-1">Shiba Inu</p>
+            <h3 class="text-lg font-medium mb-1">Rp. 2.000.000</h3>
+          </mat-card-content>
+          <mat-card-actions class="gap-1 justify-content-between">
+            <div class="flex align-items-center">
+              <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
+              <p class="m-0 text-center pl-1">3.5</p>
+            </div>
+            <a class="text-sm">
+              <mat-icon
+                class="mr-0 flex align-items-center"
+                style="height: 20px; width: 20px; font-size: 18px"
+                >shopping_cart</mat-icon
+              >
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-3 px-2">
+        <mat-card class="example-card">
+          <img
+            mat-card-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu"
+          />
+          <mat-card-content>
+            <p class="m-o mt-3 text-base mb-1">Shiba Inu</p>
+            <h3 class="text-lg font-medium mb-1">Rp. 2.000.000</h3>
+          </mat-card-content>
+          <mat-card-actions class="gap-1 justify-content-between">
+            <div class="flex align-items-center">
+              <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
+              <p class="m-0 text-center pl-1">3.5</p>
+            </div>
+            <a class="text-sm">
+              <mat-icon
+                class="mr-0 flex align-items-center"
+                style="height: 20px; width: 20px; font-size: 18px"
+                >shopping_cart</mat-icon
+              >
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

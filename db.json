@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Sepatu Merah",
+      "category": "shoes",
+      "image": "https://media.istockphoto.com/id/628210852/id/foto/sepatu-olahraga.jpg?s=1024x1024&w=is&k=20&c=mdR5ULuI7D0d_dKFEdpnZW3Xk5tmj8j0Sr5jViCkmjQ=",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper arcu et urna venenatis, sit amet molestie felis vulputate. Donec scelerisque metus purus, ac efficitur ante tincidunt fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus rhoncus arcu tristique, pulvinar metus at, posuere diam. Mauris vel bibendum.",
+      "rating": 3,
+      "price": 350000,
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "name": "Sepatu Biru",
+      "category": "shoes",
+      "image": "https://media.istockphoto.com/id/1249496770/id/foto/sepatu-lari.jpg?s=1024x1024&w=is&k=20&c=1SxZ-ZMfmchdJ6M4fGXRQ4HdsCglB_Y9DqVehrTARJM=",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper arcu et urna venenatis, sit amet molestie felis vulputate. Donec scelerisque metus purus, ac efficitur ante tincidunt fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus rhoncus arcu tristique, pulvinar metus at, posuere diam. Mauris vel bibendum.",
+      "rating": 3.5,
+      "price": 320500,
+      "stock": 3
+    },
+    {
+      "id": 3,
+      "name": "Kaos Oblong Putih",
+      "category": "shirt",
+      "image": "https://media.istockphoto.com/id/1151955708/id/foto/template-t-shirt-kosong-putih-pria-dari-dua-sisi-bentuk-alami-pada-manekin-tak-terlihat-untuk.jpg?s=1024x1024&w=is&k=20&c=JfuMAjUhA5TLLTztsFGJlOviCmuOf6Kj6wd7ZAnlNiw=",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper arcu et urna venenatis, sit amet molestie felis vulputate. Donec scelerisque metus purus, ac efficitur ante tincidunt fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus rhoncus arcu tristique, pulvinar metus at, posuere diam. Mauris vel bibendum.",
+      "rating": 3.5,
+      "price": 55000,
+      "stock": 10
+    },
+    {
+      "id": 4,
+      "name": "Kaos Sporty",
+      "category": "shirt",
+      "image": "https://media.istockphoto.com/id/842096404/id/vektor/kaos-01.jpg?s=1024x1024&w=is&k=20&c=bVNU9EyHXH2lXJdTnTQQw5c466lNLzcIOy8hbbnTQVY=",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper arcu et urna venenatis, sit amet molestie felis vulputate. Donec scelerisque metus purus, ac efficitur ante tincidunt fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus rhoncus arcu tristique, pulvinar metus at, posuere diam. Mauris vel bibendum.",
+      "rating": 35,
+      "price": 85000,
+      "stock": 7
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "shoes"
+    },
+    {
+      "id": 2,
+      "name": "shirt"
+    },
+    {
+      "id": 3,
+      "name": "pants"
+    },
+    {
+      "id": 4,
+      "name": "jacket"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "name": "Joko Susilo",
+      "email": "joko@mail.com",
+      "phone": "+62857123445",
+      "address": "Semarang",
+      "product": [
+        {
+          "name": "Sepatu Merah",
+          "price": 350000,
+          "quantity": 1
+        },
+        {
+          "name": "Kaos Sporty",
+          "price": 85000,
+          "quantity": 7
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+.color-gold {
+  color: gold;
+}
+.color-tomato {
+  color: tomato;
+}
+
+@media screen and (min-width: 768px) {
+  .md\:ml-28 {
+    margin-left: 28rem !important;
+  }
+
+  .md\:w-26 {
+    width: 26rem !important;
+  }
+}
