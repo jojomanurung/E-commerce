@@ -22,4 +22,7 @@ export class ProductsService {
     return this.http.get(this.baseUrl + `products/${id}`);
   }
   
+  checkout(payload: any) {
+    return this.http.post(this.baseUrl + `orders`, payload);
+  }
 }

@@ -1,3 +1,8 @@
+.reset-anchor {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (min-width: 768px) {
     .md\:inner-content {
       min-height: calc(100vh - 160px);

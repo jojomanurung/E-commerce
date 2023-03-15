@@ -80,6 +80,33 @@
           "quantity": 7
         }
       ]
+    },
+    {
+      "id": 2,
+      "name": "Joshua",
+      "email": "test@email.com",
+      "phone": "83984810",
+      "address": "Semarang",
+      "product": [
+        {
+          "product_id": 1,
+          "name": "Sepatu Merah",
+          "price": 350000,
+          "quantity": 2
+        },
+        {
+          "product_id": 2,
+          "name": "Sepatu Biru",
+          "price": 320500,
+          "quantity": 1
+        },
+        {
+          "product_id": 3,
+          "name": "Kaos Oblong Putih",
+          "price": 55000,
+          "quantity": 3
+        }
+      ]
     }
   ]
 }
