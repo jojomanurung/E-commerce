@@ -2,18 +2,10 @@
   <div class="fixed">
     <mat-card class="example-card">
       <mat-card-header>
-        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
         <mat-card-title>Filter</mat-card-title>
       </mat-card-header>
-      <!-- <mat-card-content>
-        <p>This card has divider and indeterminate progress as footer</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions> -->
-      <mat-accordion class="md:w-26" multi displayMode="flat">
-        <mat-expansion-panel>
+      <mat-accordion class="md:w-20" multi displayMode="flat">
+        <mat-expansion-panel expanded="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Category </mat-panel-title>
           </mat-expansion-panel-header>
@@ -26,7 +18,7 @@
             </mat-chip-option>
           </mat-chip-listbox>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel expanded="true" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Rating </mat-panel-title>
           </mat-expansion-panel-header>
@@ -44,7 +36,7 @@
       </mat-accordion>
     </mat-card>
   </div>
-  <div class="relative md:ml-28">
+  <div class="relative md:ml-21">
     <!-- Product Cards -->
     <div class="grid grid-nogutter">
       <div class="col-3 px-2" *ngFor="let product of products">
@@ -62,7 +54,7 @@
                 </mat-card-content>
             </a>
             <mat-card-actions class="gap-1 justify-content-between">
-              <div class="flex align-items-center">
+              <div class="flex">
                 <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
                 <p class="m-0 text-center pl-1">{{ product.rating }}</p>
               </div>

@@ -1,1 +1,93 @@
-<p>details works!</p>
+<div>
+  <div class="fixed">
+    <div class="md:w-25 md:h-22">
+      <img
+        class="border-round-lg"
+        [src]="product?.image"
+        [alt]="product?.name"
+        style="width: 100%; height: 100%; object-fit: contain"
+      />
+    </div>
+  </div>
+  <div class="relative md:ml-28">
+    <div class="grid grid-nogutter gap-6">
+      <div class="col">
+        <h3 class="font-semibold text-xl mb-0">{{ product?.name }}</h3>
+        <div class="flex gap-2 mb-3">
+          <h3 class="mb-0">{{ product?.category | titlecase }}</h3>
+          <div class="flex align-items-center">
+            <mat-icon class="md:font-stars text-center color-tomato"
+              >star</mat-icon
+            >
+            <p class="m-0 text-center pl-1">{{ product?.rating }}</p>
+          </div>
+        </div>
+        <h1 class="font-bold text-3xl">
+          {{ product?.price | currency : "IDR" : "symbol-narrow" : "1.0-0" }}
+        </h1>
+        <p class="text-justify">
+          {{ product?.description }}
+        </p>
+      </div>
+      <div class="col-4">
+        <div class="side-panel px-3 py-3 grid grid-nogutter">
+          <div class="col-12">
+            <h4 class="font-medium text-xl">Atur Jumlah</h4>
+          </div>
+          <div class="col-12">
+            <div class="grid grid-nogutter">
+              <div class="col pr-2">
+                <mat-form-field
+                  appearance="outline"
+                  class="md:w-8rem"
+                  color="primary"
+                >
+                  <input type="number" matInput [formControl]="jumlah" (keydown)="keyListenner($event)"/>
+                  <button
+                    matPrefix
+                    mat-icon-button
+                    style="width: 40px; height: 40px"
+                    [disabled]="jumlah.value === 1"
+                    (click)="removeItem()"
+                  >
+                    <mat-icon
+                      class="mr-0 flex align-items-center"
+                      style="height: 16px; width: 15px; font-size: 16px"
+                      >remove</mat-icon
+                    >
+                  </button>
+                  <button
+                    matSuffix
+                    mat-icon-button
+                    style="width: 40px; height: 40px"
+                    (click)="addItem()"
+                  >
+                    <mat-icon
+                      class="mr-0 flex align-items-center"
+                      style="height: 16px; width: 15px; font-size: 16px"
+                      >add</mat-icon
+                    >
+                  </button>
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <p class="mb-0 mt-3 text-base">Stok Total: {{ product?.stock }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="flex justify-content-between align-items-center">
+                <p class="text-lg" style="color:#737373">Subtotal</p>
+                <p class="text-lg font-semibold">{{ total ?? product?.price | currency:"IDR" : "symbol-narrow" : "1.0-0"}}</p>
+            </div>
+          </div>
+          <div class="col-12">
+            <button mat-flat-button color="primary" class="w-full">
+                + Keranjang
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

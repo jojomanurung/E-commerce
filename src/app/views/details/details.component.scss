@@ -1,0 +1,38 @@
+.color-gold {
+  color: gold;
+}
+.color-tomato {
+  color: tomato;
+}
+
+.side-panel {
+  box-shadow: 0px 0px 3px 1px #3f51b5;
+  border-radius: 1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+  .md\:ml-28 {
+    margin-left: 28rem !important;
+  }
+  .md\:w-25 {
+    width: 25rem !important;
+  }
+  .md\:h-22 {
+    height: 22rem !important;
+  }
+  .md\:font-stars {
+    font-size: 1.35rem !important;
+  }
+}
