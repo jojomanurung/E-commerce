@@ -44,7 +44,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     const currentValue = this.jumlah.value;
     if ((!currentValue || currentValue < 10) && $event.key === 'Backspace' ) {
       $event.preventDefault();
-      this.jumlah.patchValue(1);
+      this.jumlah.patchValue(0);
+    } else if (!currentValue && $event.code.includes('Digit')) {
+      $event.preventDefault();
+      const number = Number($event.key);
+      this.jumlah.patchValue(number);
     } else {
       return;
     }

@@ -47,7 +47,7 @@
                     matPrefix
                     mat-icon-button
                     style="width: 40px; height: 40px"
-                    [disabled]="jumlah.value === 1"
+                    [disabled]="!jumlah.value || jumlah.value === 1"
                     (click)="removeItem()"
                   >
                     <mat-icon
@@ -74,6 +74,7 @@
                 <p class="mb-0 mt-3 text-base">Stok Total: {{ product?.stock }}</p>
               </div>
             </div>
+            <span class="absolute md:span-error" *ngIf="!jumlah.value">Minimal pembelian 1 barang </span>
           </div>
           <div class="col-12">
             <div class="flex justify-content-between align-items-center">
