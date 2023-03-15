@@ -1,0 +1,95 @@
+<div>
+  <div class="grid grid-nogutter">
+    <div class="col-8 pr-4">
+      <div class="flex justify-content-between pb-3 pt-2 md:shadow-divider">
+        <h2 class="text-2xl font-medium">Keranjang Belanja</h2>
+        <h2 class="text-2xl font-medium">3 Item</h2>
+      </div>
+      <mat-card class="md:h-20 mt-4" appearance="outlined">
+        <div class="grid grid-nogutter mx-4 mt-4">
+          <div class="col pr-4">
+            <img
+              mat-card-xl-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            />
+          </div>
+          <div class="col">
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Extra large</mat-card-subtitle>
+          </div>
+          <div class="col-fixed w-6rem">
+            <mat-card-title>Each</mat-card-title>
+            <mat-card-subtitle>Rp30,000</mat-card-subtitle>
+          </div>
+          <div class="col">
+            <mat-card-title>Quantity</mat-card-title>
+            <mat-form-field
+              appearance="outline"
+              class="md:w-8rem"
+              color="primary"
+            >
+              <input
+                type="number"
+                matInput
+                [formControl]="jumlah"
+                (keydown)="keyListener($event)"
+              />
+              <button
+                matPrefix
+                mat-icon-button
+                style="width: 40px; height: 40px"
+                [disabled]="!jumlah.value || jumlah.value === 1"
+                (click)="removeItem()"
+              >
+                <mat-icon
+                  class="mr-0 flex align-items-center"
+                  style="height: 16px; width: 15px; font-size: 16px"
+                  >remove</mat-icon
+                >
+              </button>
+              <button
+                matSuffix
+                mat-icon-button
+                style="width: 40px; height: 40px"
+                (click)="addItem()"
+              >
+                <mat-icon
+                  class="mr-0 flex align-items-center"
+                  style="height: 16px; width: 15px; font-size: 16px"
+                  >add</mat-icon
+                >
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="col-fixed w-6rem">
+            <mat-card-title>Total</mat-card-title>
+            <mat-card-subtitle>Rp30,000</mat-card-subtitle>
+          </div>
+        </div>
+        <div class="pl-4 pt-2">
+          <a>Hapus</a>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-4">
+      <div class="fixed md:w-25">
+        <div class="flex justify-content-between pb-3 pt-2 md:shadow-divider">
+          <h2 class="text-2xl font-medium">Ringkasan Belanja</h2>
+        </div>
+        <div class="md:h-20 mt-4">
+          <div class="flex justify-content-between">
+            <h3 class="">Items 3</h3>
+            <h3 class="">Rp900,000</h3>
+          </div>
+          <div class="flex justify-content-between">
+            <h3 class="">Discount</h3>
+            <h3 class="">Rp0</h3>
+          </div>
+          <div class="flex justify-content-between">
+            <button mat-flat-button color="primary">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

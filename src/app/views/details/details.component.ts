@@ -40,7 +40,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  keyListenner($event: KeyboardEvent) {
+  keyListener($event: KeyboardEvent) {
     const currentValue = this.jumlah.value;
     if ((!currentValue || currentValue < 10) && $event.key === 'Backspace' ) {
       $event.preventDefault();

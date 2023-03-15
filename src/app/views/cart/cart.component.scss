@@ -1,0 +1,25 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+  .md\:shadow-divider {
+    border-bottom: 1px solid #c0c0c0;
+  }
+
+  .md\:h-20 {
+    height: 20rem !important;
+  }
+
+  .md\:w-25 {
+    width: 25rem !important;
+  }
+}
