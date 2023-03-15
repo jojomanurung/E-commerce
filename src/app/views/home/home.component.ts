@@ -8,38 +8,34 @@ import { ProductsService } from 'src/app/services/products/products.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  categories!: any[];
-
-  ratings = [
-    {name: '5'},
-    {name: '4'},
-    {name: '3'},
-    {name: '2'},
-    {name: '1'},
-  ]
 
   products!: any[];
 
   subs!: Subscription;
 
+  filter = {};
+
   constructor(private ps: ProductsService) {}
 
   
   ngOnInit() {
-    this.getCategories();
     this.getAllProducts();
   }
 
-  getCategories() {
-    this.subs = this.ps.getCategories().subscribe((response: any) => {
-      this.categories = response;
+  getAllProducts() {
+    this.subs = this.ps.getAllProducts(this.filter).subscribe((response: any) => {
+      this.products = response;
     })
   }
 
-  getAllProducts() {
-    this.subs = this.ps.getAllProducts().subscribe((response: any) => {
-      this.products = response;
-    })
+  filterCat(event: any) {
+    console.log(event);
+    if (event.value) {
+      this.filter = { category: event.value.toLowerCase() };
+    } else {
+      this.filter = {};
+    }
+    this.getAllProducts();
   }
   
   ngOnDestroy() {

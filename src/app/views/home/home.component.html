@@ -1,73 +1,22 @@
 <div>
   <div class="fixed">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>Filter</mat-card-title>
-      </mat-card-header>
-      <mat-accordion class="md:w-20" multi displayMode="flat">
-        <mat-expansion-panel expanded="true" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title> Category </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-chip-listbox aria-label="Color selection" multiple="true">
-            <mat-chip-option
-              *ngFor="let chip of categories"
-              color="primary"
-            >
-              {{ chip.name | titlecase }}
-            </mat-chip-option>
-          </mat-chip-listbox>
-        </mat-expansion-panel>
-        <mat-expansion-panel expanded="true" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title> Rating </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-chip-listbox aria-label="Color selection" multiple="true">
-            <mat-chip-option
-              *ngFor="let chip of ratings"
-            >
-              <div class="flex">
-                <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
-                <p class="m-0 text-center pl-1">{{ chip.name }}</p>
-              </div>
-            </mat-chip-option>
-          </mat-chip-listbox>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-card>
+    <app-home-filter (filterCat)="filterCat($event)"></app-home-filter>
   </div>
   <div class="relative md:ml-21">
     <!-- Product Cards -->
     <div class="grid grid-nogutter">
-      <div class="col-3 px-2" *ngFor="let product of products">
-          <mat-card class="example-card">
-            <a class="reset-anchor" routerLink="{{'/details/'+product.id}}">
-                <img
-                  mat-card-image
-                  [src]="product.image"
-                  [alt]="product.name"
-                  style="width: 100%; height: 150px; object-fit: scale-down;"
-                />
-                <mat-card-content>
-                  <p class="m-o mt-3 text-base mb-1">{{ product.name }}</p>
-                  <h3 class="text-lg font-medium mb-1">{{ product.price | currency: 'IDR':'symbol-narrow':'1.0-0' }}</h3>
-                </mat-card-content>
-            </a>
-            <mat-card-actions class="gap-1 justify-content-between">
-              <div class="flex">
-                <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
-                <p class="m-0 text-center pl-1">{{ product.rating }}</p>
-              </div>
-              <a class="text-sm cursor-pointer">
-                <mat-icon
-                  class="mr-0 flex align-items-center"
-                  style="height: 20px; width: 20px; font-size: 18px"
-                  >shopping_cart</mat-icon
-                >
-              </a>
-            </mat-card-actions>
-          </mat-card>
-      </div>
+      <ng-container *ngIf="products.length; else empty">
+        <div class="col-3 px-2" *ngFor="let product of products">
+            <app-home-card [product]="product"></app-home-card>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <div class="col px-2 text-center">
+          <h1 class="text-xl font-semibold">
+            Maaf, produk tidak ditemukan
+          </h1>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

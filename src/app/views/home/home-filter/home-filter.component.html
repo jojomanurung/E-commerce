@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Filter</mat-card-title>
+  </mat-card-header>
+  <mat-accordion class="md:w-20" displayMode="flat">
+    <mat-expansion-panel expanded="true" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Category </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-chip-listbox aria-label="Color selection" (change)="filterCat.emit($event)">
+        <mat-chip-option *ngFor="let chip of categories" color="primary">
+          {{ chip.name | titlecase }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </mat-expansion-panel>
+    <!-- <mat-expansion-panel expanded="true" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Rating </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-chip-listbox aria-label="Color selection" multiple="true">
+        <mat-chip-option *ngFor="let chip of ratings">
+          <div class="flex">
+            <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
+            <p class="m-0 text-center pl-1">{{ chip.name }}</p>
+          </div>
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </mat-expansion-panel> -->
+  </mat-accordion>
+</mat-card>

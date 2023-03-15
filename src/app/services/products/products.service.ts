@@ -14,8 +14,8 @@ export class ProductsService {
     return this.http.get(this.baseUrl + `categories`);
   }
 
-  getAllProducts() {
-    return this.http.get(this.baseUrl + `products`);
+  getAllProducts(filter?: any) {
+    return this.http.get(this.baseUrl + `products`, {params: filter});
   }
 
   getProductById(id: any) {

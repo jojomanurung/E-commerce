@@ -10,11 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
-
-
+import { HomeFilterComponent } from './home-filter/home-filter.component';
+import { HomeCardComponent } from './home-card/home-card.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, HomeFilterComponent, HomeCardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -22,7 +22,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     MatIconModule,
     MatExpansionModule,
-    MatChipsModule
-  ]
+    MatChipsModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}
