@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Cart, CartService } from 'src/app/services/cart/cart.service';
 import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
@@ -18,12 +19,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(
     private ps: ProductsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cs: CartService
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.getDetails(id);
   }
 
@@ -31,7 +32,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.subs = this.ps.getProductById(id).subscribe({
       next: (resp: any) => {
         this.product = resp;
-        console.log(this.product);
         this.subTotal();
       },
       error: (err) => {
@@ -68,13 +68,21 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   subTotal() {
     this.subs = this.jumlah.valueChanges.subscribe((val) => {
-      console.log('jumlah', val)
       if (val) {
         const subTotal = this.product.price * val;
         this.total = subTotal;
-        console.log(this.total);
       }
     })
+  }
+
+  addCart() {
+    const payload: Cart = {
+      product_id: this.product.id,
+      name: this.product.name,
+      price: this.product.price,
+      quantity: this.jumlah.value!
+    }
+    this.cs.addItem(payload, payload.quantity)
   }
 
   ngOnDestroy(): void {

@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   filterCat(event: any) {
-    console.log(event);
     if (event.value) {
       this.filter = { category: event.value.toLowerCase() };
     } else {

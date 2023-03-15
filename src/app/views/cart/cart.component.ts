@@ -59,7 +59,6 @@ export class CartComponent implements OnInit, OnDestroy {
             this.addProductsArr();
           });
           this.products.patchValue(this.productss);
-          console.log('form', this.productsForm.value);
           this.subTotal = this.getTotal();
           this.listenProductsForm();
         } else {
