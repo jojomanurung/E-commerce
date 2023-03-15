@@ -3,73 +3,109 @@
     <div class="col-8 pr-4">
       <div class="flex justify-content-between pb-3 pt-2 md:shadow-divider">
         <h2 class="text-2xl font-medium">Keranjang Belanja</h2>
-        <h2 class="text-2xl font-medium">3 Item</h2>
+        <h2 class="text-2xl font-medium">
+          {{ products.value.length ?? 0 }} Item
+        </h2>
       </div>
-      <mat-card class="md:h-20 mt-4" appearance="outlined">
-        <div class="grid grid-nogutter mx-4 mt-4">
-          <div class="col pr-4">
-            <img
-              mat-card-xl-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            />
-          </div>
-          <div class="col">
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Extra large</mat-card-subtitle>
-          </div>
-          <div class="col-fixed w-6rem">
-            <mat-card-title>Each</mat-card-title>
-            <mat-card-subtitle>Rp30,000</mat-card-subtitle>
-          </div>
-          <div class="col">
-            <mat-card-title>Quantity</mat-card-title>
-            <mat-form-field
-              appearance="outline"
-              class="md:w-8rem"
-              color="primary"
-            >
-              <input
-                type="number"
-                matInput
-                [formControl]="jumlah"
-                (keydown)="keyListener($event)"
-              />
-              <button
-                matPrefix
-                mat-icon-button
-                style="width: 40px; height: 40px"
-                [disabled]="!jumlah.value || jumlah.value === 1"
-                (click)="removeItem()"
+      <div *ngIf="products.value.length; else empty">
+        <ng-container [formGroup]="productsForm">
+          <ng-container formArrayName="products">
+            <ng-container *ngFor="let product of products.controls; index as i">
+              <mat-card
+                class="md:h-20 mt-4"
+                appearance="outlined"
+                [formGroupName]="i"
               >
-                <mat-icon
-                  class="mr-0 flex align-items-center"
-                  style="height: 16px; width: 15px; font-size: 16px"
-                  >remove</mat-icon
-                >
-              </button>
-              <button
-                matSuffix
-                mat-icon-button
-                style="width: 40px; height: 40px"
-                (click)="addItem()"
-              >
-                <mat-icon
-                  class="mr-0 flex align-items-center"
-                  style="height: 16px; width: 15px; font-size: 16px"
-                  >add</mat-icon
-                >
-              </button>
-            </mat-form-field>
-          </div>
-          <div class="col-fixed w-6rem">
-            <mat-card-title>Total</mat-card-title>
-            <mat-card-subtitle>Rp30,000</mat-card-subtitle>
-          </div>
-        </div>
-        <div class="pl-4 pt-2">
-          <a>Hapus</a>
-        </div>
-      </mat-card>
+                <div class="grid grid-nogutter mx-4 mt-4">
+                  <div class="col pr-4">
+                    <img
+                      mat-card-xl-image
+                      [src]="product.get('image')?.value"
+                      style="object-fit: contain"
+                    />
+                  </div>
+                  <div class="col">
+                    <mat-card-title>{{
+                      product.get("name")?.value
+                    }}</mat-card-title>
+                    <mat-card-subtitle>{{
+                      product.get("category")?.value | titlecase
+                    }}</mat-card-subtitle>
+                  </div>
+                  <div class="col-fixed w-6rem">
+                    <mat-card-title>Each</mat-card-title>
+                    <mat-card-subtitle>{{
+                      product.get("price")?.value
+                        | currency : "IDR" : "symbol-narrow" : "1.0-0"
+                    }}</mat-card-subtitle>
+                  </div>
+                  <div class="col">
+                    <mat-card-title>Quantity</mat-card-title>
+                    <mat-form-field
+                      appearance="outline"
+                      class="md:w-8rem"
+                      color="primary"
+                    >
+                      <input
+                        type="number"
+                        matInput
+                        formControlName="quantity"
+                        (keydown)="keyListener($event, i)"
+                      />
+                      <button
+                        matPrefix
+                        mat-icon-button
+                        style="width: 40px; height: 40px"
+                        [disabled]="
+                          !products.at(i).get('quantity')?.value ||
+                          products.at(i).get('quantity')?.value === 1
+                        "
+                        (click)="substractQty(i)"
+                      >
+                        <mat-icon
+                          class="mr-0 flex align-items-center"
+                          style="height: 16px; width: 15px; font-size: 16px"
+                          >remove</mat-icon
+                        >
+                      </button>
+                      <button
+                        matSuffix
+                        mat-icon-button
+                        style="width: 40px; height: 40px"
+                        (click)="addQty(i)"
+                      >
+                        <mat-icon
+                          class="mr-0 flex align-items-center"
+                          style="height: 16px; width: 15px; font-size: 16px"
+                          >add</mat-icon
+                        >
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-fixed w-6rem">
+                    <mat-card-title>Total</mat-card-title>
+                    <mat-card-subtitle>{{
+                      product.get("price")?.value *
+                        product.get("quantity")?.value
+                        | currency : "IDR" : "symbol-narrow" : "1.0-0"
+                    }}</mat-card-subtitle>
+                  </div>
+                </div>
+                <div class="pl-4 pt-2">
+                  <a class="cursor-pointer" (click)="removeItem(i)">Hapus</a>
+                </div>
+              </mat-card>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+      <ng-template #empty>
+        <mat-card class="md:h-20 mt-4" appearance="outlined">
+          <h3 class="text-2xl font-medium text-center">
+            Anda belum menambahkan produk
+          </h3>
+        </mat-card>
+      </ng-template>
     </div>
     <div class="col-4">
       <div class="fixed md:w-25">
@@ -77,17 +113,24 @@
           <h2 class="text-2xl font-medium">Ringkasan Belanja</h2>
         </div>
         <div class="md:h-20 mt-4">
-          <div class="flex justify-content-between">
-            <h3 class="">Items 3</h3>
-            <h3 class="">Rp900,000</h3>
-          </div>
-          <div class="flex justify-content-between">
-            <h3 class="">Discount</h3>
-            <h3 class="">Rp0</h3>
-          </div>
-          <div class="flex justify-content-between">
-            <button mat-flat-button color="primary">Checkout</button>
-          </div>
+          <ng-container *ngIf="products.value.length; else emptySum">
+            <div class="flex justify-content-between">
+              <h3 class="">Items {{ products.value.length }}</h3>
+              <h3 class="">{{ subTotal | currency : "IDR" : "symbol-narrow" : "1.0-0" }}</h3>
+            </div>
+            <div class="flex justify-content-between">
+              <h3 class="">Discount</h3>
+              <h3 class="">Rp0</h3>
+            </div>
+            <div class="flex justify-content-between">
+              <button mat-flat-button color="primary">Checkout</button>
+            </div>
+          </ng-container>
+          <ng-template #emptySum>
+            <h3 class="text-2xl font-medium text-center">
+              Anda belum menambahkan produk
+            </h3>
+          </ng-template>
         </div>
       </div>
     </div>

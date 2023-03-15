@@ -18,7 +18,7 @@
       <mat-icon class="text-xl text-center color-tomato">star</mat-icon>
       <p class="m-0 text-center pl-1">{{ product.rating }}</p>
     </div>
-    <a class="text-sm cursor-pointer">
+    <a class="text-sm cursor-pointer" (click)="addItem.emit(product)">
       <mat-icon
         class="mr-0 flex align-items-center"
         style="height: 20px; width: 20px; font-size: 18px"

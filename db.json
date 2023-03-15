@@ -68,11 +68,13 @@
       "address": "Semarang",
       "product": [
         {
+          "product_id": 1,
           "name": "Sepatu Merah",
           "price": 350000,
           "quantity": 1
         },
         {
+          "product_id": 4,
           "name": "Kaos Sporty",
           "price": 85000,
           "quantity": 7

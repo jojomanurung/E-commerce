@@ -5,16 +5,17 @@
   <div class="relative md:ml-21">
     <!-- Product Cards -->
     <div class="grid grid-nogutter">
-      <ng-container *ngIf="products.length; else empty">
+      <ng-container *ngIf="products?.length; else empty">
         <div class="col-3 px-2" *ngFor="let product of products">
-            <app-home-card [product]="product"></app-home-card>
+          <app-home-card
+            [product]="product"
+            (addItem)="addItem($event)"
+          ></app-home-card>
         </div>
       </ng-container>
       <ng-template #empty>
         <div class="col px-2 text-center">
-          <h1 class="text-xl font-medium">
-            Maaf, produk tidak ditemukan :(
-          </h1>
+          <h1 class="text-xl font-medium">Maaf, produk tidak ditemukan :(</h1>
         </div>
       </ng-template>
     </div>
